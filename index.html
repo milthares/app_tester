@@ -1,0 +1,28 @@
+<html>
+  <body>
+    <button id="test_push" class="push_notification">
+      test
+    </button>
+  </body>
+
+  <script>
+    const button = document.getElementById("test_push");
+
+    button.addEventListener('click', () => {
+      if(!("Notification" in window)) {
+        alert("This browser do not support push notification");
+        return;
+      }
+
+      if (Notification.permission === "granted") {
+        sendNotification();
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            sendNotification();
+          }
+        });
+      }
+    });
+  </script>
+</html>
