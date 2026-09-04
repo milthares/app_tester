@@ -24,5 +24,18 @@
         });
       }
     });
+
+    function sendNotification() {
+      const option = {
+        body: 'Test push notification!',
+        icon: 'https://placeholder.com',
+        vibrate: [200, 100, 200],
+        data: {
+          url: window.location.href
+        }
+      };
+
+      new Notification('New Test!', options);
+    }
   </script>
 </html>
